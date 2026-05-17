@@ -155,7 +155,7 @@
     </div>
 
     <p>
-    Retana-Montenegro et al. provided a useful analytical expression for the potential as a function of radius which, combined with my own derivations of the radial force and second radial derivatives, allowed for the implementation of the common mechanics for a spherical density profile. My codes translated each of the intialisation conventions into a common backend, using the estimation equation (see paper) for <div class="math-block">$$d_n$$</div> if necessary and a numerical solver to refine this initial estimation.
+    Retana-Montenegro et al. provided a useful analytical expression for the potential as a function of radius which, combined with my own derivations of the radial force and second radial derivatives, allowed for the implementation of the common mechanics for a spherical density profile. My codes translated each of the intialisation conventions into a common backend, using the estimation equation (see paper) for $d_n$ if necessary and a numerical solver to refine this initial estimation.
 
     Many of the calculations performed above made use of known identities for the derivatives of the Gamma and incomplete Gamma functions, together with numerical libraries used to evaluate these functions efficiently.
     </p>
@@ -163,7 +163,7 @@
     <p>
     One aspect of this project that I particularly enjoyed was the process of translating between the mathematics presented in the literature and the practical considerations of scientific software design.
 
-    Even relatively compact equations often require a surprising degree of numerical care once they become part of a reusable library. Taking pen to paper throughout this project was a fun detour from the more software-oriented side of the work.
+    Even relatively compact equations often require a surprising degree of numerical care once they become part of a reusable library. Taking pen to paper throughout this project was also a really fun detour from the more software-oriented side of the work.
     </p>
   </div>
 </div>
@@ -180,20 +180,15 @@
     <h2>(WIP) Triaxial Stäckel Action Estimation</h2>
 
     <p>
-      More recently, I’ve started exploring methods for approximating orbital actions,
-      particularly the Triaxial Stäckel approximation method.
+        More recently, I’ve started exploring methods for approximating orbital actions,
+        particularly the Triaxial Stäckel approximation method from <a href="http://adsabs.harvard.edu/abs/2014arXiv1412.2093S">Sanders &amp; Binney 2015</a>.
     </p>
 
     <p>
-      This is still very much a work in progress (you can view the open PR <a href="https://github.com/jobovy/galpy/pull/872">Here</a>), but it’s become one of the most interesting areas I’ve looked at so far.
-      
+        The method described in the paper leverages the analytical properties of action calculations in the presence of a Stäckel potential. The key then becomes finding a suitable Stäckel potential to describe the actual potential (locally, at least). It's this step that has piqued my interest, as I believe there may be some room for improvement on current methodology which uses integrated test particles to determine a suitable Stäckel potential - I'd love to be able to return to this work and find some new methods.
     </p>
-
     <p>
-      I’m especially interested in how these kinds of quantities might be estimated more efficiently,
-      particularly as modern Galactic surveys continue pushing computational limits.
-      Even just implementing existing methods has already taught me a huge amount about the structure
-      of galactic dynamics problems.
+        At the time of writing, my implementation of the original method is just a work in progress (you can view the open PR <a href="https://github.com/jobovy/galpy/pull/872">Here</a>), but it’s become one of the most interesting areas I’ve looked at so far.
     </p>
   </div>
 </div>

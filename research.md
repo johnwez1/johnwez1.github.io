@@ -123,13 +123,15 @@ permalink: /research/
     <h3>Stellar Magnetic Activity</h3>
 
     <p>
-      I’m interested in stellar magnetic activity cycles and long-timescale variability,
-      particularly using Full Frame Image data from modern survey missions.
+      This is a relatively new interest for me, and one I'm very excited about.
     </p>
 
     <p>
-      There’s something compelling about trying to recover slow astrophysical behaviour
-      from datasets that were often collected for entirely different scientific goals.
+      Large scale photometric surveys such as Kepler and TESS have produced extensive time-domain datasets, over long observational baselines. While these surveys were optimised for exoplanet detection and have been highly successful in characterising short-term variability, their Full-Frame Image (FFI) data products remain comparatively underexploited. These FFI outputs, along with results from other surveys (Gaia, GALAH, Rubin) presents an opportunity to fill a gap in the literature for studies of magnetic activity and other long term photometric variability in the era of large surveys.
+    </p>
+
+    <p>
+      The prospects for discovery in these datasets are promising, and I am excited to see what we can find in current and upcoming surveys.
     </p>
 
   </div>
@@ -140,7 +142,7 @@ permalink: /research/
 
     <p>
       Another area I’ve started exploring is the numerical estimation of orbital actions.
-      This began through reading the literature and working on implementing an existing approximation method in code.
+      This began through reading the literature and working on implementing an existing approximation method in code. 
     </p>
 
     <p>
