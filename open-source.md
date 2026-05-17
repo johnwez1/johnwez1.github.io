@@ -50,10 +50,9 @@ Hopefully this is just the beginning of a much longer list of projects.
     </p>
 
     <p>
-    In practice, this means the adaptive integrator internally maintains accuracy over its own timesteps,
+    In practice, this means the adaptive integrator internally maintains accuracy over its own (dynamic) timesteps,
     while smaller (or larger) constant timesteps are exposed externally to the user.
-    Although functional, this approach could likely be improved further through interpolation methods,
-    reducing the need for repeated small-step evaluations while preserving accuracy guarantees.
+    Therefore, this implementation works best when a relatively large timestep is applied, reducing the need for repeated small-step evaluations while preserving accuracy guarantees. Common interpolation methods can be applied if smaller steps are required by the user.
     </p>
 
     <p>
