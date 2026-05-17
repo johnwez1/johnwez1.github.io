@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Open Source | John Weatherall</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+    </script>
+    
+    <script
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+      async>
+    </script>
 </head>
 <body>
 
@@ -27,9 +39,9 @@
 
   <main class="container">
     <div class="hero-section">
-  <img src="/assets/images/open_source.jpeg" alt="Open source development and astrophysics" class="hero-image" />
+  <img src="/assets/images/omega_cen_orbit.png" alt="Open source development and astrophysics" class="hero-image" />
   <p class="image-caption">
-    Building tools, experimenting with ideas, and slowly bridging software engineering with astrophysics.
+    Omega Centauri integrated in a Milky Way potential over 5Gyr using the IAS15 integrator.
   </p>
 </div>
 
@@ -37,7 +49,7 @@
 
 <p>In some of my spare time, I’ve been revisiting a lot of the core material from undergraduate physics and astrophysics. Part of that process has been trying to bridge the gap between my current work in software engineering and the research areas I’d eventually like to move further into.</p>
 
-<p>One of the ways I’ve approached that is through open source contributions in astrophysics software. I ended up choosing the galactic dynamics library <code>galpy</code>, partly because I used it during my undergraduate studies, and partly because the maintainers had already provided a list of interesting potential extensions and research-adjacent problems to work on.</p>
+<p>One of the ways I’ve approached that is through open source contributions in astrophysics software. I ended up choosing the galactic dynamics library <a href="https://github.com/jobovy/galpy" target="_blank">galpy</a>, partly because I used it during my undergraduate studies, and partly because the maintainers had already provided a list of interesting potential extensions and research-adjacent problems to work on.</p>
 
 <p>It’s been a genuinely enjoyable way to learn again - reading papers, implementing methods, debugging numerical behaviour, and slowly becoming more comfortable working closer to the underlying physics rather than purely infrastructure and backend systems.</p>
 
@@ -45,9 +57,9 @@
 
 <div class="feature-block">
   <div class="feature-image">
-    <img src="/assets/images/ias15.jpeg" alt="Numerical integration and orbital dynamics" />
+    <img src="/assets/images/omega_cen_orbit_profile.png" alt="Numerical integration and orbital dynamics" />
     <p class="image-caption">
-      Numerical integration methods sit underneath a huge amount of modern computational astrophysics.
+      Same orbit as above, in R-z plane.
     </p>
   </div>
 
@@ -55,27 +67,45 @@
     <h2>IAS15 Numerical Integrator</h2>
 
     <p>
-      One of my first major contributions involved implementing the IAS15 numerical integrator.
-      IAS15 is a high-order adaptive integrator designed for extremely accurate long-term orbital integration,
-      particularly in gravitational systems where numerical stability matters over very long timescales.
+    One of my first major open source contributions involved implementing the IAS15 numerical integrator 
+    published in <a href="hhttp://adsabs.harvard.edu/abs/2015MNRAS.446.1424R/" target="_blank">Rein &amp; Spiegel 2015</a>.
+    IAS15 is a high-order adaptive integrator designed for extremely accurate long-term orbital integration,
+    particularly in gravitational systems where numerical stability matters over very long timescales.
     </p>
 
     <p>
-      This project was a great introduction to the practical side of computational astrophysics —
-      translating mathematical descriptions from papers into reliable code,
-      understanding error behaviour, and working within an established scientific codebase.
+    The project became a great introduction to the practical side of computational astrophysics —
+    translating mathematical descriptions from papers into reliable code,
+    understanding numerical error behaviour, and working within an established scientific codebase used by researchers.
     </p>
 
     <p>
-      It also gave me a much deeper appreciation for how much care and engineering sits behind
-      the scientific software that researchers often use every day without thinking twice about it.
+    One interesting challenge was adapting the integrator to align with the integration routines already present within the library. Unlike some other implementations, this version makes additional function calls during each timestep to calculate the current position, allowing compatibility with the library’s constant output timestep structure.
+    </p>
+
+    <p>
+    In practice, this means the adaptive integrator internally maintains accuracy over its own timesteps,
+    while smaller (or larger) constant timesteps are exposed externally to the user.
+    Although functional, this approach could likely be improved further through interpolation methods,
+    reducing the need for repeated small-step evaluations while preserving accuracy guarantees.
+    </p>
+
+    <p>
+    More than anything, the project gave me a much deeper appreciation for how much careful engineering sits underneath
+    the scientific software researchers often rely on every day without thinking twice about it.
+    </p>
+
+    <p>
+    Note: New methods for determining the timestep have been proposed in 
+    <a href="https://ui.adsabs.harvard.edu/abs/2024OJAp....7E...1P/" target="_blank">Pham et al. 2024</a>
+    that would be valuable to implement in order to bring the method to feature parity.
     </p>
   </div>
 </div>
 
 <div class="feature-block reverse">
   <div class="feature-image">
-    <img src="/assets/images/einasto.jpeg" alt="Einasto density profile" />
+    <img src="/assets/images/einasto_density.png" alt="Einasto density profile" />
     <p class="image-caption">
       Density profiles provide simplified models for understanding galactic structure and dark matter distributions.
     </p>
@@ -85,29 +115,64 @@
     <h2>Einasto Density Profile</h2>
 
     <p>
-      Another project involved implementing the Einasto density profile as a galactic potential.
+      Another project involved implementing the Einasto density profile (<a href="https://ui.adsabs.harvard.edu/abs/1965TrAlm...5...87E" target="_blank">Einasto 1965</a>) as a galactic potential.
       The Einasto profile appears frequently in studies of galactic structure and dark matter halo modelling,
       and has become an important tool in modern galactic dynamics.
     </p>
 
     <p>
-      What I enjoyed most here was the balance between physical modelling and software design.
-      Scientific code often needs to be both mathematically rigorous and flexible enough
-      for other researchers to build upon later.
+        The implementation itself was relatively straightforward, largely following the existing approaches within
+        <a href="https://github.com/jobovy/galpy" target="_blank" rel="noopener noreferrer">galpy</a>
+        for mass densities stratified on spherical geometries.
+        I chose to follow the conventions described in <a href="https://www.aanda.org/articles/aa/full_html/2012/04/aa18543-11/aa18543-11.html" target="_blank">Retana-Montenegro et al. (2012)</a>,
+        which discusses several equivalent parameterisations of the Einasto density profile, including:
+    </p>
+
+    <div class="math-block">
+
+    $$
+    \rho(r) = \mathrm{amp}\,\exp\left(
+    -d_n \left[
+    \left(\frac{r}{r_s}\right)^\frac{1}{n} - 1
+    \right]
+    \right)
+    $$
+
+    $$
+    \rho(r) = \mathrm{amp}\,\exp\left(
+    -2n \left[
+    \left(\frac{r}{r_{-2}}\right)^\frac{1}{n} - 1
+    \right]
+    \right)
+    $$
+
+    $$
+    \rho(r) = \mathrm{amp}\,\exp\left(
+    -\left(\frac{r}{h}\right)^\frac{1}{n}
+    \right)
+    $$
+
+    </div>
+
+    <p>
+    Retana-Montenegro et al. provided a useful analytical expression for the potential as a function of radius which, combined with my own derivations of the radial force and second radial derivatives, allowed for the implementation of the common mechanics for a spherical density profile. My codes translated each of the intialisation conventions into a common backend, using the estimation equation (see paper) for <div class="math-block">$$d_n$$</div> if necessary and a numerical solver to refine this initial estimation.
+
+    Many of the calculations performed above made use of known identities for the derivatives of the Gamma and incomplete Gamma functions, together with numerical libraries used to evaluate these functions efficiently.
     </p>
 
     <p>
-      Working through these implementations has been one of the most effective ways I’ve found
-      to properly understand the underlying literature rather than only reading it passively.
+    One aspect of this project that I particularly enjoyed was the process of translating between the mathematics presented in the literature and the practical considerations of scientific software design.
+
+    Even relatively compact equations often require a surprising degree of numerical care once they become part of a reusable library. Taking pen to paper throughout this project was a fun detour from the more software-oriented side of the work.
     </p>
   </div>
 </div>
 
 <div class="feature-block">
   <div class="feature-image">
-    <img src="/assets/images/staeckel.jpeg" alt="Galactic dynamics and orbital actions" />
+    <img src="/assets/images/torus.png" alt="Galactic dynamics and orbital actions" />
     <p class="image-caption">
-      Estimating orbital actions efficiently remains an important problem in Galactic dynamics.
+      The conserved actions define a torus in euclidean space.
     </p>
   </div>
 
@@ -120,9 +185,8 @@
     </p>
 
     <p>
-      This is still very much a work in progress, but it’s become one of the most interesting areas I’ve looked at so far.
-      There’s something satisfying about problems that sit halfway between geometry, physics,
-      and numerical optimisation.
+      This is still very much a work in progress (you can view the open PR <a href="https://github.com/jobovy/galpy/pull/872">Here</a>), but it’s become one of the most interesting areas I’ve looked at so far.
+      
     </p>
 
     <p>
@@ -148,11 +212,10 @@
 
 .hero-image {
   width: 100%;
-  max-width: 1000px;
-  height: 560px;
-  object-fit: cover;
-  object-position: center;
+  max-width: 400px;
+  height: auto;
   border-radius: 16px;
+  display: block;
 }
 
 .feature-block {
@@ -173,9 +236,8 @@
 .feature-image img {
   width: 100%;
   max-width: 420px;
-  aspect-ratio: 1 / 1;
+  height: auto;
   border-radius: 14px;
-  object-fit: cover;
   display: block;
 }
 
@@ -202,6 +264,11 @@
   opacity: 0.75;
   line-height: 1.4;
   font-style: italic;
+}
+
+.math-block {
+  margin: 2rem 0;
+  overflow-x: auto;
 }
 
 .closing-note {

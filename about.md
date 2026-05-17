@@ -3,16 +3,99 @@ layout: default
 title: About
 permalink: /about/
 ---
+<div class="about-wrapper">
 
-# About
+  <div class="profile-column">
+    <img src="{{ '/assets/images/profile.jpeg' | relative_url }}"
+         alt="Profile photo"
+         class="profile-image">
+  </div>
 
-This site is a place to document ongoing research, software projects,
-technical writing, and personal exploration.
+  <div class="about-text">
 
-My work sits at the intersection of systems engineering, infrastructure,
-open-source tooling, and applied research. I enjoy building durable,
-practical systems that balance performance, simplicity, and long-term maintainability.
+    <p>
+      This site is a place to document ongoing research, software projects,
+      technical writing, and personal exploration.
+    </p>
 
-Outside of technical work, I spend a significant amount of time in mountain
-environments — hiking, skiing, paragliding, and supporting small-scale
-ecological restoration and rewilding projects.
+    <p>
+      My work sits at the intersection of applied AI engineering, open-source tooling, and applied research. I enjoy building durable, practical systems that balance performance, simplicity, and long-term maintainability.
+    </p>
+
+    <p>
+      Outside of technical work, I try to spend as much time as possible in the outdoors - hiking, skiing, paragliding, and when I can, supporting small-scale ecological restoration and rewilding projects.
+    </p>
+
+  </div>
+
+</div>
+
+<style>
+
+.about-wrapper {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  max-width: 980px;
+  margin: 5rem auto;
+}
+
+.profile-column {
+  display: flex;
+  justify-content: center;
+}
+
+.about-text {
+  padding-top: 0;
+}
+
+.about-text p:first-child {
+  margin-top: 0;
+}
+
+.profile-image {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.profile-image {
+  margin-top: -50px;
+}
+
+.about-text {
+  max-width: 650px;
+}
+
+.about-text p {
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 800px) {
+
+  .about-wrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .about-text {
+    max-width: 100%;
+  }
+
+  .profile-image {
+    width: 180px;
+    height: 180px;
+  }
+
+}
+
+</style>

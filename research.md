@@ -4,16 +4,6 @@ title: Research
 permalink: /research/
 ---
 
-<div class="hero-section">
-  <img src="{{ '/assets/images/research.jpeg' | relative_url }}"
-       alt="Astronomical research and night sky"
-       class="hero-image">
-
-  <p class="image-caption">
-    Research interests spanning Galactic Archaeology, stellar dynamics, and scientific software.
-  </p>
-</div>
-
 # Research
 
 <p class="intro-text">
