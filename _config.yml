@@ -1,12 +1,12 @@
-title: Your Name
-email: you@example.com
+title: John Weatherall
+email: j.f.weatherall.com
 description: >
   Research, open source, field notes, and personal projects.
 
 baseurl: ""
-url: "https://YOUR_USERNAME.github.io"
+url: "https://johnwez1.github.io"
 
-github_username: YOUR_USERNAME
+github_username: johnwez1
 
 theme: minima
 
