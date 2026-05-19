@@ -32,6 +32,13 @@ Hopefully this is just the beginning of a much longer list of projects.
   <div class="feature-content">
     <h2>IAS15 Numerical Integrator</h2>
 
+     <p class="project-link">
+        <a href="https://github.com/jobovy/galpy/pull/643" target="_blank" rel="noopener noreferrer">
+        View pull request on GitHub
+        </a>
+    </p>
+
+
     <p>
     One of my first major open source contributions involved implementing the IAS15 numerical integrator 
     published in <a href="hhttp://adsabs.harvard.edu/abs/2015MNRAS.446.1424R/" target="_blank">Rein & Spiegel 2015</a>.
@@ -78,6 +85,12 @@ Hopefully this is just the beginning of a much longer list of projects.
 
   <div class="feature-content">
     <h2>Einasto Density Profile</h2>
+    
+    <p class="project-link">
+        <a href="https://github.com/jobovy/galpy/pull/760" target="_blank" rel="noopener noreferrer">
+        View pull request on GitHub
+        </a>
+    </p>
 
     <p>
       Another project involved implementing the Einasto density profile (<a href="https://ui.adsabs.harvard.edu/abs/1965TrAlm...5...87E" target="_blank">Einasto 1965</a>) as a galactic potential.
@@ -144,6 +157,12 @@ Hopefully this is just the beginning of a much longer list of projects.
   <div class="feature-content">
     <h2>(WIP) Triaxial Stäckel Action Estimation</h2>
 
+    <p class="project-link">
+        <a href="https://github.com/jobovy/galpy/pull/872" target="_blank" rel="noopener noreferrer">
+        View open pull request on GitHub
+        </a>
+    </p>
+
     <p>
         More recently, I’ve started exploring methods for approximating orbital actions,
         particularly the Triaxial Stäckel approximation method from <a href="http://adsabs.harvard.edu/abs/2014arXiv1412.2093S">Sanders & Binney 2015</a>.
@@ -153,7 +172,7 @@ Hopefully this is just the beginning of a much longer list of projects.
         The method described in the paper leverages the analytical properties of action calculations in the presence of a Stäckel potential. The key then becomes finding a suitable Stäckel potential to describe the actual potential (locally, at least). It's this step that has piqued my interest, as I believe there may be some room for improvement on current methodology which uses integrated test particles to determine a suitable Stäckel potential - I'd love to be able to return to this work and find some new methods.
     </p>
     <p>
-        At the time of writing, my implementation of the original method is just a work in progress (you can view the open PR <a href="https://github.com/jobovy/galpy/pull/872">Here</a>), but it’s become one of the most interesting areas I’ve looked at so far.
+        At the time of writing, my implementation of the original method is just a work in progress, but it’s become one of the most interesting areas I’ve looked at so far.
     </p>
   </div>
 </div>
@@ -234,6 +253,21 @@ Hopefully this is just the beginning of a much longer list of projects.
 .closing-note {
   margin-top: 3rem;
   opacity: 0.8;
+}
+
+.project-link {
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.project-link a {
+  color: #666;
+  text-decoration: none;
+}
+
+.project-link a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 800px) {
